@@ -1,0 +1,20 @@
+<%- include('../partials/head') %>
+<title>SMTALBPG - İletişim</title>
+</head>
+  <body style="background:#eee;"><br><br><br><br>
+<div style="background:#fff; padding:2vw;" class="container">
+<form method="POST" action="/iletisim">
+<input style="padding:5px" class="col-5" type="text" placeholder="Kullanıcı adı" id="username" name="username"><br><br>
+<input style="padding:5px" class="col-5" type="text" placeholder="Gmail" id="gmail" name="gmail"><br><br>
+<p>Mesaj :</p>
+<textarea class="col-md-6" id="mesaj" name="mesaj"></textarea><br><br>
+<input class="btn bg-main" type="submit">
+</form>
+  <style>
+    input{padding:5px;}
+  textarea{
+  resize:none;
+  height:25vh;
+  }
+  </style>
+</body>
