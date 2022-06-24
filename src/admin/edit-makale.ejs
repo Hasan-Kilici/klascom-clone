@@ -1,0 +1,61 @@
+<script>
+/*
+const id = req.params.id
+Makale.findByIdAndUpdate(id,{
+title : "deneme"
+}).then((result)=>{
+console.log("Title ayarlandı")
+})
+*/
+</script> 
+<style>
+input{padding:5px;}
+  textarea{
+  resize:none;
+  width:50%;
+  height:25vh;
+  }
+</style>
+<head>
+<meta charset="utf-8" />
+<link rel="icon" href="https://glitch.com/favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/style.css" />
+<link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet"> 
+<script src="script.js"></script>
+<title><%= makale.title %></title>
+</head>
+<body>
+<div id="navbar" style="width:100%" class="fixed">
+<div class="topnav" id="myTopnav">
+  <a class="logo" id="navbar-text" href="/">SMTALBPG</a>
+  <a href="/" class="active">Anasayfa</a>
+  <a onclick="projects()">Projeler</a>
+  <a onclick="group()">Ekip</a>
+  <a onclick="about()">Hakkımızda</a>
+  <a onclick="kurumsal()">Kurumsal</a>
+  <a href="javascript:void(0);" class="icon" onclick="navOpen()">
+  <i class="fa fa-bars"></i>
+  </a>
+</div>
+</div><br><br><br>
+<div class="container">
+<form method="POST" action="/editMakale/<%=makale._id %>">
+<input type="text" value="<%=makale.title%>" id="title" name="title"> 
+<input type="text" value="<%=makale.short%>" id="short" name="short"><br><br>
+<input type="text" value="<%=makale.foto1%>" id="foto1" name="foto1" placeholder="1.fotoğraf"><br>
+<p>Uzun yazı</p>
+<textarea id="long" name="long"><%=makale.long%></textarea><br><br>
+<input type="text" value="<%=makale.foto2%>" id="foto2" name="foto2" placeholder="2.fotoğraf"><br>
+<p>Ekstra açıklama</p>
+<textarea id="longdesc" name="longdesc"><%= makale.longdesc %></textarea><br>
+<p>Örnek 1</p>
+<textarea id="ornek1" name="ornek1"><%= makale.ornek1 %></textarea><br>
+<p>Örnek 2</p>
+<textarea id="ornek2" name="ornek2"><%= makale.ornek2 %></textarea><br>
+<p>Örnek 3</p>
+<textarea id="ornek3" name="ornek3"><%= makale.ornek3 %></textarea><br><br>
+<input type="submit">
+</form>
+</div>
+</body>
