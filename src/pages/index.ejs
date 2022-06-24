@@ -1,0 +1,40 @@
+<%- include('../partials/head') %>
+<title>SMTALBPG - Anasayfa</title>
+</head>
+<body>
+<%- include('../partials/navbar') %>
+<%- include('../partials/jumbotron') %>
+<%- include('../partials/ekip') %>
+<%- include('../partials/kurumsal') %>
+<%- include('../partials/projeler') %>
+<div class="container">
+<h3>Makaleler</h3>
+<% makale.forEach(makale => { %>
+<div class="blog">
+<a class="title" href="/makale/<%=makale._id%>"><%= makale.title%></a>  
+<p><%= makale.short %></p>
+<span style="color:#666"><i style="color:#bbb" class="far fa-eye"> </i> <%= makale.goruntulenme %> Görüntülenme</span><br><br>
+<span style="color:#666;margin-top:10vh;">
+<span style="margin-right:1vw;"><i class="fas fa-thumbs-up"></i> <%= makale.upvote %></span>
+<span><i class="fas fa-thumbs-down"></i> <%= makale.downvote %></span>  
+</span><br>
+</div>
+<% }) %>
+<h3>Haberler</h3>
+<% haberler.forEach(haberler => { %>
+<div style="padding:0;" class="blog">
+<div class="row">
+<div style="padding:2vw;" class="col-md-10">
+<a class="title" href="/haber/<%=haberler._id%>"><%= haberler.title %></a>  
+<p><%= haberler.short %></p>
+<span style="color:#666"><i style="color:#bbb" class="far fa-eye"> </i> <%= haberler.goruntulenme %> Görüntülenme</span><br>
+<span style="font-size:0.5em;color:#666">Yüklenme tarihi :<%= haberler.createdAt %></span>
+</div>
+<div class="col-md-2" style="padding:1vw;">
+<img style="border-radius:5px;" src="<%= haberler.foto %>" height="150px" width="100%">
+  </div>
+</div>
+</div>
+<% }) %>
+</div>
+</body>
