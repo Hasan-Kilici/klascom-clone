@@ -1,0 +1,36 @@
+const mongoose = require("mongoose")
+const Schema = mongoose.Schema
+ 
+var haberlerSchema = new Schema({
+title:{
+type:String,
+require:true,
+},
+short:{
+type:String,
+require:true,
+},
+long:{
+type:String,
+require:true,
+},
+longdesc:{
+type:String,
+require:true,
+},
+foto:{
+type:String,
+require:true,
+},
+link:{
+type:String,
+require:true,
+},
+goruntulenme:{
+type:Number,
+require:true,  
+}
+}, {timestamps:true})
+
+var haberler = mongoose.model('Haberler', haberlerSchema)
+module.exports = haberler
