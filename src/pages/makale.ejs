@@ -1,0 +1,184 @@
+  
+<head>
+<style>p{
+font-size:1.4em;
+padding:0.3vw;
+width:min(100% - 4vw);
+}</style>
+<script> 
+  function navOpen() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+function closeNav(){
+  var x = document.getElementById("myTopnav");
+  x.className = "topnav";
+}
+  </script>
+<script>
+var ornek2 = '<%- makale.ornek2 %>';
+var ornek3 = '<%- makale.ornek3 %>';
+window.onload = ()=>{
+console.log(ornek1)
+document.getElementById("ornek1").innerHTML = ornek1;
+}
+</script>
+<meta charset="utf-8" />
+<link rel="icon" href="https://glitch.com/favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/style.css" />
+<link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet"> 
+<script src="script.js"></script>
+<title><%= makale.title%></title>
+</head><body>
+<div id="navbar" style="width:100%" class="fixed">
+<div class="topnav" id="myTopnav">
+  <a class="logo" id="navbar-text" href="/">SMTALBPG</a>
+  <a href="/" class="active">Anasayfa</a>
+  <a onclick="projects()">Projeler</a>
+  <a onclick="group()">Ekip</a>
+  <a onclick="about()">Hakkımızda</a>
+  <a onclick="kurumsal()">Kurumsal</a>
+  <a href="javascript:void(0);" class="icon" onclick="navOpen()">
+  <i class="fa fa-bars"></i>
+  </a>
+</div>
+</div>
+<script>
+</script><br><br><br>
+<div class="container-fluid">
+<div style="align-items:start" class="row">
+<div class="col-md-10 bg-white">
+<% if(makale.foto1 == true) { %>
+<center><img src="<%= makale.foto1 %>" width="60%" height="30%"></center>
+<% } else { %>
+<% } %>
+<div style="width:min(100% - 40%); margin-inline:auto">
+<h3><%= makale.title %></h3>
+<div id="short">
+
+</div>
+<div id="long">
+<br><%- makale.long %><br><br>
+</div>
+<% if(makale.ornek1 == "false") { %>
+  
+<% } else { %>
+<h3>Örnek</h3>
+<div id="ornek1" class="ornek">
+  <%- makale.ornek1 %>
+  </div>
+<% } %>
+<div id="longdesc">
+<%- makale.longdesc %>
+</div>
+<% if(makale.ornek2 == "false") { %>
+<% } else { %>
+<div id="ornek2" class="ornek">
+<%- makale.ornek2 %>
+</div>
+<% } %>
+<% if(makale.ornek3 == "false") { %>
+<% } else { %>
+<div id="ornek3" class="ornek">
+</div>
+<% } %>
+</div>
+<div style="width:min(100% - 40%);margin-inline:auto;margin-bottom:2vh;">
+<% if (giris == "true") { %>
+<b>Bu makale işinize yaradı mı?</b><br>
+<form  style="float:left;margin-right:2vw;" method="POST" action="/upvote/<%= makale._id %>">
+<button style="border:none;padding:0.2vw;border-radius:8px;text-align:center;background:transparent;font-size:1em;" type="submit" >
+<i class="fas fa-thumbs-up"></i> <%= makale.upvote %>
+</button>
+</form>
+<form method="POST" action="/downvote/<%= makale._id%>">
+<button style="border:none;padding:0.2vw;border-radius:8px;text-align:center;background:transparent;font-size:1em;" type="submit" >
+<i class="fas fa-thumbs-down"></i> <%= makale.downvote %>
+</button>
+</form>
+<% } else { %>
+<b>Bu makale işinize yaradı mı?</b><br>
+<span style="margin-right:2vw;"><i class="fas fa-thumbs-up"></i> <%= makale.upvote %></span>
+<i class="fas fa-thumbs-down"></i> <%= makale.downvote %>
+<% } %>
+</div>
+<div class="col-12 bg-sky">
+<div class="yorumlar">
+<h3>Yorumlar</h3>
+<% yorum.forEach(yorum => { %>
+<p class="yorum-kullanici"><%= yorum.kullanici_adi %></p>
+<span class="yorum-mesaj"><%= yorum.mesaj %></span>
+<% }) %>
+<% if(giris == "true") { %>
+<p>Yorum yap :</p>
+<form method="POST" action="/makale/yorum-ekle/<%= makale._id %>">
+<textarea id="mesaj" name="mesaj"></textarea><br><br>
+<input class="btn bg-main" type="submit">
+  </form>
+<% } else { %>
+  <P>Yorum yapmak için giriş yapman gerek</P>
+<% } %>
+</div>
+</div>
+</div>
+<div class="col-md-2 bg-sky2">
+<% makaleler.forEach(makaleler => { %>
+<div style="padding:2vw; width:100%">
+<center>
+<img style="border-radius:5px;" src="<%= makaleler.foto %>" class="foto-mob"><br><br>
+<a class="title" href="/haber/<%=makaleler._id%>"><%= makaleler.title %></a>
+  </center>
+</div>
+<% }) %>
+</div>
+</div>  
+</div>
+  <style>
+    .bg-sky2{background:#E4E9F7}
+    .bg-sky{background:#d8dce8}
+    .yorumlar{
+      padding:2vw;
+      width:min(100% - 40%);
+      margin-inline:auto;
+    }
+    @media only screen and (max-width:600px){
+      .yorumlar{
+      margin-bottom:5vh;
+      }
+    }
+    .yorum-mesaj{
+    margin-top:-5vh;
+    padding:1vw;
+    }
+    .yorum-kullanici{
+    margin-bottom:-0.5vh;
+    }
+    textarea{
+      width:100%;
+      resize:none;
+      height:23vh;
+    }
+    .btn{
+      padding:0.5vw;
+    font-size:1.2em;
+    }
+    .bg-white{padding:0}
+    .ornek{
+    padding:1vw;
+    background:#ddd;
+    margin-bottom:1vh;
+    border-radius:8px;
+    }
+    body{
+      background:#d8dce8;
+    }
+    .liste{
+      list-style-type: decimal;
+    }
+  </style>
+  </body>
