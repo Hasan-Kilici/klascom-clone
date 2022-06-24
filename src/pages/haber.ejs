@@ -1,0 +1,117 @@
+  
+<head>
+<style>p{
+font-size:1.4em;
+padding:0.3vw;
+width:min(100% - 4vw);
+}</style>
+<script> 
+  function navOpen() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+function closeNav(){
+  var x = document.getElementById("myTopnav");
+  x.className = "topnav";
+}
+</script>
+<meta charset="utf-8" />
+<link rel="icon" href="https://glitch.com/favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/style.css" />
+<link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet"> 
+<script src="script.js"></script>
+<title><%= haber.title%></title>
+</head>
+<div id="navbar" style="width:100%" class="fixed">
+<div class="topnav" id="myTopnav">
+  <a class="logo" id="navbar-text" href="/">SMTALBPG</a>
+  <a href="/" class="active">Anasayfa</a>
+  <a onclick="projects()">Projeler</a>
+  <a onclick="group()">Ekip</a>
+  <a onclick="about()">Hakkımızda</a>
+  <a onclick="kurumsal()">Kurumsal</a>
+  <a href="javascript:void(0);" class="icon" onclick="navOpen()">
+  <i class="fa fa-bars"></i>
+  </a>
+</div>
+</div>
+<script>
+window.onload = ()=>{
+document.getElementById("long").innerHTML = "<%= haberler.long %>";
+document.getElementById("longdesc").innerHTML = "<%= haberler.longdesc %>";
+}
+</script><br><br><br>
+<div class="container-fluid">
+<div style="align-items:start" class="row">
+<div class="col-md-10 bg-white">
+<h3 style="padding:2vw"><%= haber.title %></h3>
+<center><img src="<%= haber.foto %>" width="60%" height="30%"></center>
+<div style="width:min(100% - 40%); margin-inline:auto">
+<%= haber.short %>
+</div>
+<div class="col-12 bg-sky">
+<div class="yorumlar">
+<% if(giris == "true") { %>
+<p>Yorum yap :</p>
+<form method="POST" action="/haber/yorum-ekle/<%= haber._id %>">
+<textarea id="mesaj" name="mesaj"></textarea><br><br>
+<input class="btn bg-main" type="submit">
+  </form>
+<% } else { %>
+  <P>Yorum yapmak için giriş yapman gerek</P>
+<% } %>
+<h3>Yorumlar</h3>
+<% yorum.forEach(yorum => { %>
+<p class="yorum-kullanici"><%= yorum.kullanici_adi %></p>
+<span class="yorum-mesaj"><%= yorum.mesaj %></span>
+<% }) %>
+</div>
+</div>
+</div>
+<div class="col-md-2">
+<% haberler.forEach(haberler => { %>
+<div style="padding:2vw; width:100%">
+<center>
+<img style="border-radius:5px;" src="<%= haberler.foto %>" class="foto-mob"><br><br>
+<a class="title" href="/haber/<%=haberler._id%>"><%= haberler.title %></a>  
+  </center>
+</div>
+<% }) %>
+</div>
+</div>  
+</div>
+  <style>
+    .bg-sky{background:#E4E9F7}
+    .yorumlar{
+      padding:2vw;
+      width:min(100% - 40%);
+      margin-inline:auto;
+    }
+    @media only screen and (max-width:600px){
+      .yorumlar{
+      margin-bottom:5vh;
+      }
+    }
+    .yorum-mesaj{
+    margin-top:-5vh;
+    padding:1vw;
+    }
+    .yorum-kullanici{
+    margin-bottom:-0.5vh;
+    }
+    textarea{
+      width:100%;
+      resize:none;
+      height:23vh;
+    }
+    .btn{
+      padding:0.5vw;
+    font-size:1.2em;
+    }
+    .bg-white{padding:0}
+  </style>
