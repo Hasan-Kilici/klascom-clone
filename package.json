@@ -1,0 +1,42 @@
+{
+  "name": "Klascom",
+  "version": "2.0.2",
+  "description": "Kawethra ve Medulla tarafından yapıldı",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
+    "discord.js": "^13.8.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "fastify": "^3.27.0",
+    "fastify-formbody": "^5.2.0",
+    "fastify-static": "^4.5.0",
+    "glob": "^8.0.3",
+    "ip-address": "^8.1.0",
+    "ipv4.js": "^0.0.2",
+    "mongoose": "^6.1.8",
+    "morgan": "^1.10.0",
+    "node-os-utils": "^1.3.7",
+    "nodemailer": "^6.7.2",
+    "parse-json": "^6.0.2",
+    "point-of-view": "^5.0.0",
+    "serve-favicon": "^2.3.0",
+    "socket.io": "^4.5.0"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/glitch-hello-node"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
