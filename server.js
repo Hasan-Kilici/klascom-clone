@@ -59,7 +59,7 @@ var Haberyorum = require("./models/haberyorum.js");
 var Makaleyorum = require("./models/makaleyorum.js")
 
 //mongoDB panel ayarları
-const dbURL = process.env.db2;
+const dbURL = "MONGODB URL"
 mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
 .then((result) => {
 app.listen(3000, ()=>{
@@ -651,4 +651,4 @@ client.guilds.cache.get("986312887461113876").channels.cache.get("98645746586655
 res.render(__dirname + "/src/ekle/iletisim.ejs")
 })
 
-client.login(process.env.TOKEN);
+client.login("Discord bot token");
