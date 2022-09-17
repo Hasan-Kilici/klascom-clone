@@ -57,7 +57,7 @@ var Admin = require("./models/admin.js");
 var Banli = require("./models/ban.js");
 var Haberyorum = require("./models/haberyorum.js");
 var Makaleyorum = require("./models/makaleyorum.js")
-
+//https://www.youtube.com/watch?v=dQw4w9WgXcQ
 //mongoDB panel ayarları
 const dbURL = "MONGODB URL"
 mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
